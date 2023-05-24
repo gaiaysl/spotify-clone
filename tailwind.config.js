@@ -12,7 +12,9 @@ module.exports = {
         backdrop:"#121212",
         link:"#b3b3b3",
         footer:"#181818",
-        active:"#282828"
+        active:"#282828",
+        button:"#2a2929",
+        heart:"#5320f1"
       }
     },
   },

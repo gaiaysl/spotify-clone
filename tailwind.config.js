@@ -14,7 +14,8 @@ module.exports = {
         footer:"#181818",
         active:"#282828",
         button:"#2a2929",
-        heart:"#5320f1"
+        heart:"#5320f1",
+        navlink:"#202020  "
       }
     },
   },

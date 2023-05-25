@@ -14,7 +14,7 @@ export default function Navigation() {
     };
    
   return (
-    <div className='flex items-center gap-x-4'>
+    <div className='flex items-center gap-x-3'>
       <button onClick={goBack} className='w-8 h-8 bg-black flex items-center justify-center rounded-full bg-opacity-70'>
         <Icon name='prev' size={22} />
       </button>

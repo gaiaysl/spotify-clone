@@ -1,10 +1,11 @@
 import React from 'react';
-
+import {Icon} from '../icon';
 interface Item {
   id: number;
   title: string;
   description: string;
   image: string;
+  type:string;
 }
 
 interface SectionsProps {
@@ -13,26 +14,39 @@ interface SectionsProps {
 }
 
 export default function Sections({ title, items }: SectionsProps) {
+
+    const ImageStyle = (item : Item) => {
+        switch (item.type) {
+        
+            case "artist":
+                return " rounded-full"
+            case "podcast":
+                return " rounded-lg"
+            default:
+                return " rounded"
+         }  } 
+
   return (
     <section className="mt-4">
-      <h2 className="text-2xl font-semibold">{title}</h2>
-      <div className="grid grid-cols-4 mt-6 gap-x-6">
+      <h2 className="text-2xl font-semibold hover:underline  ">{title}</h2>
+      <div className="grid grid-cols-4 mt-6  gap-x-6">
         {items.map((item) => (
-          <div key={item.id} className="bg-backdrop p-4 group relative">
-            <div className="mx-auto">
-              <img
+          <div key={item.id} className="bg-backdrop  rounded-lg mb-4 hover:bg-active h-72  p-4  group relative ">
+            <div >
+             <img
                 src={item.image}
                 alt={item.title}
-                className="h-full w-full object-cover object-center"
+                className={`h-full w-full relative object-cover object-center ${ImageStyle(item)}`}
               />
-              <button className="w-10 h-10 rounded-full bg-primary absolute bottom-0 right-0 transform translate-x-1/6         translate-y-1/4 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300">
-                {/* İçeriğini doldurun */}
+              <button className="w-11 h-11 rounded-full bg-primary absolute top-[155px] right-6 flex items-center justify-center opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300">
+              <Icon name="play"  size={24}/>
               </button>
-            </div>
-            <h3 className="text-base font-bold mt-2">{item.title}</h3>
+            
+              <h3 className="text-base font-bold mt-2">{item.title}</h3>
             <p className="text-sm font-semibold text-link overflow-hidden overflow-ellipsis whitespace-nowrap">
               {item.description}
             </p>
+            </div>
           </div>
         ))}
       </div>

@@ -4,15 +4,15 @@ import {Icon} from '../icon';
 export default function SideBar() {
 
     return (
-      <div className="w-96 flex flex-shrink-0 flex-col">
+      <div className="w-[420px] flex flex-shrink-0 flex-col mt-2">
         
         <div className='bg-backdrop rounded-md ml-2'>
           
          
-          <nav className="px-2 py-8">
+          <nav className="px-2 py-5 ">
             <ul className="flex flex-col">
               <li> 
-                <a href="/" className="gap-x-4 h-10 flex font-semibold text-link items-center hover:text-white px-4 rounded bg-active">
+                <a href="/" className="gap-x-4 h-10  mb-2 flex font-semibold text-white items-center px-4 rounded ">
                 <Icon name="home" />Home
                 </a>
               </li>
@@ -28,14 +28,14 @@ export default function SideBar() {
 
         <div className='bg-backdrop h-full rounded-md ml-2 mt-2 flex-auto'>
           <div className='flex flex-row justify-between'>
-            <a href="/collection" className="gap-x-4 h-10 flex font-semibold text-link items-center hover:text-white px-6 rounded ">
+            <a href="/collection" className="gap-x-4 h-10 mt-2 flex font-semibold text-link items-center hover:text-white px-6 rounded ">
               
             <Icon name="collection" />Your Library
            
             </a>
-            <a href="#" className="text-link  px-4 py-3">
+            <a href="#" className="text-link  mt-2 px-4 py-3">
 
-                <Icon name="plus" size={18} />
+                <Icon name="plus" size={16} />
             </a>
           </div>
 
@@ -43,7 +43,7 @@ export default function SideBar() {
             <button className='border-2 rounded-full border-active bg-active px-2 py-1 text-sm mx-2'>PlayLists</button>
             <button className='border-2 rounded-full border-active bg-active px-2 py-1 text-sm'>Artists</button>
           </div>
-          <div className='max-h-96 overflow-auto border-t border-white border-opacity-20 '>
+          <div className='max-h-[470px] overflow-auto border-t border-white border-opacity-20 '>
           <a href="/liked-songs" className="mt-4 flex flex-row items-center gap-x-3  rounded h-10 mx-6 ">
             <span className='bg-gradient-to-br from-heart to-blue-100 rounded-sm p-3'>
                 <Icon name="heart" />

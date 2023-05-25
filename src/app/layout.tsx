@@ -25,9 +25,11 @@ export default function RootLayout({
   <div className=" flex flex-row h-full ">
   <SideBar />
   
-  <div className="mt-2  ml-2 flex-auto">
-       <div className="bg-backdrop px-4 h-full rounded-md  ">
+  <div className="mt-2  ml-2 flex-auto ">
+       <div className="bg-gradient-to-b from-navlink to-bg-backdrop px-2 h-full rounded-md   ">
+        <div className='overflow-auto '>
          <Navbar />
+         </div>
       {children}
        </div>
        

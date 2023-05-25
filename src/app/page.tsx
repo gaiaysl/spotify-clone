@@ -27,7 +27,7 @@ const Home: React.FC<HomeProps> = () => {
       title: "Classic Road Trip Songs",
       description: "A sondtrack to fuel your good mood while on the road.",
       image: "https://i.scdn.co/image/ab67706f000000026906e3e07bd1de92c8a6fb08",
-      type:"album"
+      type:"podcast"
     },
     {
       id: 3,
@@ -43,18 +43,17 @@ const Home: React.FC<HomeProps> = () => {
       image: "https://i.scdn.co/image/ab67706f00000002c99c17bbcdadddf326983b5d",
       type:"podcast"
     },
-    {
-      id: 5,
-      title: "Shape my of heart",
-      description: "Dale Prince",
-      image: "https://i.scdn.co/image/ab67706c0000da841dd5c799338c46e64abf3446",
-      type:"podcast"
-    },
+ 
   ];
 
   return (
-    <div className="text-2xl font-semibold mx-6">
+    <div className="text-2xl font-semibold mx-4 max-h-[650px] overflow-auto ">
       <Sections title="Recently played" items={items} />
+      <Sections title=" Your top mixes" items={items} />
+      <Sections title="Made For Gaye yanardağ" items={items} />
+      <Sections title="Based on your recent listening" items={items} />
+     
+      
     </div>
   );
 };

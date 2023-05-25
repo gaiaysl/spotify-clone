@@ -1,5 +1,8 @@
+import Sections from "@/components/Sections"
 export default function Search() {
   return(
-    <div>burası app</div>
+    <div>
+     <Sections title={"Recent searches"} items={[]}/>
+    </div>
   )
 }

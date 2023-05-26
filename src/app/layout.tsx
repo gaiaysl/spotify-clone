@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import SideBar from "@/components/SideBar";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
+import { Providers } from './provider';
+import { store } from '@/store/store';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -20,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Providers>
       <div className="main">
   
   <div className=" flex flex-row h-full ">
@@ -42,6 +45,7 @@ export default function RootLayout({
     <Footer />
   </div>
 </div>
+     </Providers>
       </body>
     </html>
   )

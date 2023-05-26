@@ -1,21 +1,30 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Icon } from '@/icon';
 import { Range } from 'react-range';
 import {useAudio} from 'react-use';
 import { secondsToTime } from '@/utils';
+import CustomRange from '../CustomRange';
 
 export default function Player() {
-  const [values, setValues] = useState<number[]>([50]);
+  
   const [audio, state, controls, ref] = useAudio({
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-    autoPlay: true,
+    
   });
-
+  const volumeIcon = useMemo(() => {
+    if (state.volume === 0 || state.muted)
+        return 'volumeMuted'
+    if (state.volume > 0 && state.volume < 0.33)
+        return 'volumeLow'
+    if (state.volume >= 0.33 && state.volume < 0.66)
+        return 'volumeNormal'
+    return 'volumeFull'
+}, [state.volume, state.muted])
 
   return (
     <div className="flex px-4 flex-row h-full justify-between items-center ">
-      <div className="mx-6">sol</div>
+      <div className="min-w-[11.25rem] w-[30%]">sol</div>
       <div className=" max-w-[45.125] w-[30%] flex flex-col items-center">
         <div className="flex items-center gap-x-2 mb-5">
           <button className="w-8 h-8 flex items-center justify-center text-white text-opacity-70 hover:text-opacity-100">
@@ -34,38 +43,55 @@ export default function Player() {
             <Icon name="repeat" size={16} />
           </button>
         </div>
-        {audio}
-        <div className="text-[0.688rem] text-white text-opacity-70">
+        <div className="w-full flex items-center mt-1.5 gap-x-2">
+                    {audio}
+                    <div className="text-[0.688rem] text-white text-opacity-70">
                         {secondsToTime(state?.time)}
                     </div>
-        <Range
-            step={0.1}
-            min={0}
-            max={100}
-            values={values}
-            onChange={(newValues) => setValues(newValues)}
-            renderTrack={({ props, children }) => (
-              <div
-                {...props}
-                className='h-1 w-full bg-white bg-opacity-20 rounded-full'
-              >
-                {children}
-              </div>
-            )}
-            renderThumb={({ props }) => (
-              <div
-                {...props}
-                className='rounded-full bg-white w-4 h-4'
-              />
-            )}
-          />
-           <div className="text-[0.688rem] text-white text-opacity-70">
+                    <CustomRange
+                         step={0.01}
+                         min={0}
+                         max={state?.duration || 1}
+                         value={state?.time}
+                         onChange={(value) => controls.seek(value)}
+                    />
+                    <div className="text-[0.688rem] text-white text-opacity-70">
                         {secondsToTime(state?.duration)}
                     </div>
+                </div>
       </div>
-      <div className="">
-        sağ
+      <div className="min-w-[11.25rem] w-[30%] flex items-center justify-end">
+      <button
+                    className="w-8 h-8 flex items-center justify-center text-white text-opacity-70 hover:text-opacity-100">
+                    <Icon size={16} name="lyrics"/>
+                </button>
+                <button
+                    className="w-8 h-8 flex items-center justify-center text-white text-opacity-70 hover:text-opacity-100">
+                    <Icon size={16} name="queue"/>
+                </button>
+                <button
+                    className="w-8 h-8 flex items-center justify-center text-white text-opacity-70 hover:text-opacity-100">
+                    <Icon size={16} name="connect"/>
+                </button>
+                <button
+                    onClick={controls[state.muted ? 'unmute' : 'mute']}
+                    className="w-8 h-8 flex items-center justify-center text-white text-opacity-70 hover:text-opacity-100">
+                    <Icon size={16} name={volumeIcon}/>
+                </button>
+                <div className="w-[5.813rem] max-w-full">
+                    <CustomRange
+                        step={0.01}
+                        min={0}
+                        max={1}
+                        value={state.muted ? 0 : state?.volume}
+                        onChange={value => {
+                            controls.unmute()
+                            controls.volume(value)
+                        }}
+                    />
+
       </div>
+    </div>
     </div>
   );
 }

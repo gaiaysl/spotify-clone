@@ -1,20 +1,29 @@
-import React from 'react';
+"use client";
+
 import {Icon} from '../icon';
+import { setCurrent } from '@/redux/features/playerSlice';
+import {useDispatch, useSelector} from "react-redux";
+
 interface Item {
   id: number;
   title: string;
   description: string;
   image: string;
   type:string;
+
 }
 
 interface SectionsProps {
   title: string;
   items: Item[];
+  
 }
 
 export default function Sections({ title, items }: SectionsProps) {
+ 
+  const dispatch = useDispatch()
 
+  const { current } = useSelector(state => state.player)
     const ImageStyle = (item : Item) => {
         switch (item.type) {
         
@@ -25,7 +34,9 @@ export default function Sections({ title, items }: SectionsProps) {
             default:
                 return " rounded"
          }  } 
+         
 
+   
   return (
     <section className="mt-4">
       <h2 className="text-2xl font-semibold hover:underline  ">{title}</h2>
@@ -38,8 +49,10 @@ export default function Sections({ title, items }: SectionsProps) {
                 alt={item.title}
                 className={`h-full w-full relative object-cover object-center ${ImageStyle(item)}`}
               />
-              <button className="w-11 h-11 rounded-full bg-primary absolute top-[155px] right-6 flex items-center justify-center opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300">
-              <Icon name="play"  size={24}/>
+              <button 
+              onClick={() => dispatch(setCurrent(item))}
+              className="w-11 h-11 rounded-full bg-primary absolute top-[155px] right-6 flex items-center justify-center opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300">
+              <Icon name={current?.id == item.id ? 'pause':'play'}  size={24}/>
               </button>
             
               <h3 className="text-base font-bold mt-2">{item.title}</h3>

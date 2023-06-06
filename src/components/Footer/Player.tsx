@@ -1,17 +1,32 @@
 'use client';
-import React, { useMemo, useState } from 'react';
+
+import React, { useMemo,useEffect } from 'react';
 import { Icon } from '@/icon';
-import { Range } from 'react-range';
 import {useAudio} from 'react-use';
 import { secondsToTime } from '@/utils';
 import CustomRange from '../CustomRange';
+import { useDispatch,useSelector } from 'react-redux';
+import { setControls } from '@/redux/features/playerSlice';
 
 export default function Player() {
-  
+
+  const dispatch = useDispatch()
+
+  const {current} = useSelector(state => state.player)
+
   const [audio, state, controls, ref] = useAudio({
-    src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+    src: current?.src
     
   });
+
+  useEffect(()=>{
+    dispatch(setControls(controls))
+ },[])
+
+   useEffect(()=>{
+    controls.play()
+   },[current])
+
   const volumeIcon = useMemo(() => {
     if (state.volume === 0 || state.muted)
         return 'volumeMuted'
@@ -51,8 +66,8 @@ export default function Player() {
                     <CustomRange
                          step={0.01}
                          min={0}
-                         max={state?.duration || 1}
-                         value={state?.time}
+                         max={state?.duration || 1} 
+                         value={state?.time }
                          onChange={(value) => controls.seek(value)}
                     />
                     <div className="text-[0.688rem] text-white text-opacity-70">

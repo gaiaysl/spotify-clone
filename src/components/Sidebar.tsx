@@ -28,7 +28,7 @@ export default function SideBar() {
 
         <div className='bg-backdrop h-full rounded-md ml-2 mt-2 flex-auto'>
           <div className='flex flex-row justify-between'>
-            <a href="/collection" className="gap-x-4 h-10 mt-2 flex font-semibold text-link items-center hover:text-white px-6 rounded ">
+            <a className="gap-x-4 h-10 mt-2 flex font-semibold text-link items-center hover:text-white px-6 rounded ">
               
             <Icon name="collection" />Your Library
            

@@ -9,6 +9,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { setControls } from '@/redux/features/playerSlice';
 import { RootState } from '@/redux/store';
 
+
 export default function Player() {
 
   const dispatch = useDispatch()
@@ -38,9 +39,40 @@ export default function Player() {
     return 'volumeFull'
 }, [state.volume, state.muted])
 
+  function setSidebar(arg0: boolean): any {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <div className="flex px-4 flex-row h-full justify-between items-center ">
-      <div className="min-w-[11.25rem] w-[30%]">sol</div>
+      <div className="min-w-[11.25rem] w-[30%] ">
+      {current &&(
+        <div className="flex items-center gap-x-2 ">
+          <div className='h-14 w-14 flex flex-row mr-3'>
+          <img src={current.image} />
+          <button
+               
+                className="w-6 h-6 bg-black opacity-0 group-hover:opacity-60 hover:!opacity-100 hover:scale-[1.06] rotate-90 rounded-full absolute top-1 right-1 flex items-center justify-center">
+                <Icon size={16} name="arrow"/>
+          </button>
+          </div>
+          <div>
+         <h6 className='text-sm line-clamp-1'>{current.title}</h6>
+          <p className='text-[0.688rem] text-white text-opacity-70 mt-1 line-clamp-1'>{current.description}</p>
+          </div>
+       
+          <button className="flex items-center ml-4 justify-center text-white text-opacity-70 hover:text-opacity-100">
+            <Icon name="heart" size={18} />
+          </button>
+          <button className="flex items-center justify-center text-white text-opacity-70 hover:text-opacity-100">
+            <Icon name="picture" size={18} />
+          </button>
+         
+          </div>
+          )
+        }
+       
+      </div>
       <div className=" max-w-[45.125] w-[30%] flex flex-col items-center">
         <div className="flex items-center gap-x-2 mb-5">
           <button className="w-8 h-8 flex items-center justify-center text-white text-opacity-70 hover:text-opacity-100">

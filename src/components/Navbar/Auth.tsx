@@ -5,12 +5,12 @@ export default function Auth() {
     return (
       
      
-          <Menu as="div" className={"relative"} >
+          <Menu as="div" className={"relative z-10 "} >
         
-      <Menu.Button className={" h-8 w-8 bg-black  flex items-center justify-center rounded-full bg-opacity-70"}>
+      <Menu.Button className={" h-8 w-8  bg-black  flex items-center justify-center rounded-full bg-opacity-70"}>
         <Icon name="user" size={18} />
       </Menu.Button>
-      <Menu.Items as ="div" className={"bg-active  absolute top-full right-0 w-48 rounded flex flex-col p-1  gap-y-1 text-sm"}>
+      <Menu.Items as ="div" className={"bg-active mt-2 absolute top-full right-0 w-48  rounded flex flex-col p-1  gap-y-1 text-sm"}>
   
         <Menu.Item  >
           {({ active }) => (

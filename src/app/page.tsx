@@ -12,7 +12,7 @@ interface Item {
 }
 
 interface HomeProps {
-  // Props tanımlamalarını burada yapabilirsiniz.
+ 
 }
 
 const Home: React.FC<HomeProps> = () => {
@@ -36,7 +36,7 @@ const Home: React.FC<HomeProps> = () => {
     {
       id: 3,
       title: "Peaceful Piano",
-      description: "Peaceful piano to help you slow down, breathe, and relax.Peaceful piano to help you slow down, breathe, and relax.Peaceful piano to help you slow down, breathe, and relax.Peaceful piano to help you slow down, breathe, and relax.",
+      description: "Peaceful piano to help you slow down,",
       image: "https://i.scdn.co/image/ab67706f00000002ca5a7517156021292e5663a6",
       type:"artist",
       src:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
@@ -54,12 +54,11 @@ const Home: React.FC<HomeProps> = () => {
 
   return (
     <div className="text-2xl font-semibold mx-4 max-h-[650px] overflow-auto ">
+     
       <Sections title="Recently played" items={items} />
       <Sections title=" Your top mixes" items={items} />
       <Sections title="Made For Gaye yanardağ" items={items} />
       <Sections title="Based on your recent listening" items={items} />
-     
-      
     </div>
   );
 };

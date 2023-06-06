@@ -30,7 +30,7 @@ export default function RootLayout({
   
   <div className="mt-2  ml-2 flex-auto ">
        <div className="bg-gradient-to-b from-navlink to-bg-backdrop px-2 h-full rounded-md   ">
-        <div className='overflow-auto '>
+        <div className=' '>
          <Navbar />
          </div>
         {children}

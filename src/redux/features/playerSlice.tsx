@@ -4,12 +4,14 @@ interface PlayerState {
   current: any;
   controls: any;
   playing: boolean;
+
 }
 
 const initialState = {
   current: false,
   controls: false,
   playing: false,
+
 } as PlayerState;
 
 export const player = createSlice({
@@ -25,6 +27,7 @@ export const player = createSlice({
   setPlaying: (state, action) => {
       state.playing = action.payload
   },
+  
   
   },
 });

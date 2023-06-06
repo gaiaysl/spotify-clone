@@ -4,9 +4,10 @@ export default function Search() {
     <div className=" max-h-[650px] overflow-auto  flex flex-col px-6 justify-between ">
       <h1 className='font-bold text-2xl mt-8'>Browse all</h1>
       <div className='grid grid-cols-4 gap-y-6   py-6'>
-     {data.map((item)=>(
+     {data.map((item,index)=>(
       
       <div
+      key={index}
       style={{'background':item.color}}
       className='w-[219px] h-[219px] rounded-xl px-6 relative overflow-hidden'
       >

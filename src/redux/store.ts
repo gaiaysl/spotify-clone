@@ -6,3 +6,5 @@ export const store = configureStore({
     player:playerReducer,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;

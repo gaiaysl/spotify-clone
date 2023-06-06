@@ -1,5 +1,5 @@
 "use client";
-
+import { RootState } from '@/redux/store';
 import {Icon} from '../icon';
 import { setCurrent } from '@/redux/features/playerSlice';
 import {useDispatch, useSelector} from "react-redux";
@@ -23,7 +23,7 @@ export default function Sections({ title, items }: SectionsProps) {
  
   const dispatch = useDispatch()
 
-  const { current } = useSelector(state => state.player)
+  const { current } = useSelector((state: RootState) => state.player)
     const ImageStyle = (item : Item) => {
         switch (item.type) {
         

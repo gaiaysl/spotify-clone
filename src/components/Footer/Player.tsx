@@ -7,12 +7,13 @@ import { secondsToTime } from '@/utils';
 import CustomRange from '../CustomRange';
 import { useDispatch,useSelector } from 'react-redux';
 import { setControls } from '@/redux/features/playerSlice';
+import { RootState } from '@/redux/store';
 
 export default function Player() {
 
   const dispatch = useDispatch()
 
-  const {current} = useSelector(state => state.player)
+  const {current} = useSelector((state:RootState) => state.player)
 
   const [audio, state, controls, ref] = useAudio({
     src: current?.src
